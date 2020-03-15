@@ -1,5 +1,9 @@
-import { Document } from 'domainModels';
+import { Document, Artboard } from 'domainModels';
 
 export default interface IQueriable {
-  getDocumentByShortId: () => Promise<Document>;
-};
+  getDocumentByShortId: (id: string) => Promise<Document>;
+
+  getNextArtboard: (name: string) => Artboard;
+
+  getPreviousArtboard: (name: string) => Artboard;
+}
