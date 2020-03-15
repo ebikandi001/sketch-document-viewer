@@ -21,8 +21,19 @@ export class GraphQlClient implements IQueriable {
     this.cachedDocument = {} as any; // TODO review type
   }
 
-  private storeDocumentInCollection(document: Document) {
-    this.cachedDocument = document;
+  private modelDataToDocument(data: any): Document {
+    const { document } = data.share.version;
+    return {
+      shortId: data.share.sortId,
+      name: document.name,
+      artboards: document.artboards.entries.map(
+        (item: Artboard, index: number) => ({
+          id: index,
+          ...item,
+        })
+      ),
+      numArtboards: document.artboards.entries.length,
+    };
   }
 
   // For simplicity we'll think that the document has been fetched already
@@ -77,21 +88,9 @@ export class GraphQlClient implements IQueriable {
         `,
       });
 
-      const { document } = result.data.share.version;
+      const modeledDocument = this.modelDataToDocument(result.data);
 
-      const modeledDocument = {
-        shortId: id,
-        name: document.name,
-        artboards: document.artboards.entries.map(
-          (item: Artboard, index: number) => ({
-            id: index,
-            ...item,
-          })
-        ),
-        numArtboards: document.artboards.entries.length,
-      };
-
-      this.storeDocumentInCollection(modeledDocument);
+      this.cachedDocument = modeledDocument;
 
       return modeledDocument;
     } catch (e) {
