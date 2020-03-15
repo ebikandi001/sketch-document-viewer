@@ -15,9 +15,24 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "domainModels": [
+        "src/domainModels"
+      ],
+      "application": [
+        "src/application"
+      ],
+      "adapters": [
+        "src/adapters"
+      ],
+      "ui": [
+        "src/ui"
+      ],
+    },
   },
   "include": [
     "src"
