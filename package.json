@@ -71,9 +71,13 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
+    "prestart": "yarn run lint",
     "start": "node scripts/start.js",
+    "prebuild": "yarn run lint",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "pretest": "yarn run lint",
+    "test": "node scripts/test.js",
+    "lint": "tslint 'src/{domainModels,application,adapter,ui}/**/*.{ts,tsx,js}'"
   },
   "eslintConfig": {
     "extends": "react-app"
