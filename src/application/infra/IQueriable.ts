@@ -1,5 +1,5 @@
 import { Document } from 'domainModels';
 
 export default interface IQueriable {
-  getDocumentByShortId: () => Document;
+  getDocumentByShortId: () => Promise<Document>;
 };

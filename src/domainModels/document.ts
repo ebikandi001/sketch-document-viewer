@@ -3,5 +3,5 @@ import { Artboard } from './artboard';
 
 export type Document = {
   name: string;
-  artboards: Array<Artboard>;
+  artboards: Artboard[];
 }

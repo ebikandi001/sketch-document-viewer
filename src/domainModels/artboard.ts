@@ -7,12 +7,11 @@ type Thumbnail = {
 
 type File = Thumbnail & {
   scale: string;
-  thumbnails: Array<Thumbnail>;
+  thumbnails: Thumbnail[];
 };
 
 export type Artboard = {
   name: string;
   isArtboard: boolean;
-  files: Array<File>;
+  files: File[];
 };
-
