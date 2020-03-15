@@ -18,13 +18,14 @@ export class GraphQlClient implements IQueriable {
       cache,
     });
 
-    this.cachedDocument = {} as any; // TODO review type
+    this.cachedDocument = {} as any; // TODO review any
   }
 
+  // TODO review any
   private modelDataToDocument(data: any): Document {
     const { document } = data.share.version;
     return {
-      shortId: data.share.sortId,
+      shortId: data.share.shortId,
       name: document.name,
       artboards: document.artboards.entries.map(
         (item: Artboard, index: number) => ({
