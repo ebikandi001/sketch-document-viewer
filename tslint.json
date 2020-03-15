@@ -20,6 +20,7 @@
       "single",
       "jsx-double"
     ],
-    "no-console": false
+    "no-console": false,
+    "no-implicit-dependencies": false
   }
 }

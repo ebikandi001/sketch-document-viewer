@@ -11,7 +11,6 @@ export class GraphQlClient implements IQueriable {
   private client: ApolloClient<any>;
   private documents: DocumentCollection;
 
-
   constructor() {
     // We'll add a cache layer to client just in case. Review if needed.
     const cache = new InMemoryCache({
@@ -26,14 +25,29 @@ export class GraphQlClient implements IQueriable {
     this.documents = {};
   }
 
-  // TODO pass shortId as arg for different documents
-  public async getDocumentByShortId(): Promise<Document | any> { // Hijacking ApolloQueryResultType as any
+  private storeDocumentInCollection(document: Document) {
+    this.documents[document.shortId] = document;
+  }
 
+  // For simplicity we'll think that the document has been fetched already
+  public getNextArtboard(name: string) {
+    return {} as any;
+  }
+
+  // TODO
+  public getPreviousArtboard(name: string) {
+    return {} as any;
+  }
+
+  public async getDocumentByShortId(
+    id: string = 'Y8wDM'
+  ): Promise<Document | any> {
+    // Hijacking ApolloQueryResultType as any
     try {
       const result = await this.client.query({
         query: gql`
           {
-            share(shortId: "Y8wDM") {
+            share(shortId: "${id}") {
               shortId
               version {
                 document {
@@ -65,9 +79,13 @@ export class GraphQlClient implements IQueriable {
       const { document } = result.data.share.version;
 
       const modeledDocument = {
+        shortId: id,
         name: document.name,
         artboards: document.artboards.entries,
+        numArtboards: document.artboards.entries.length,
       };
+
+      this.storeDocumentInCollection(modeledDocument);
 
       return modeledDocument;
     } catch (e) {
