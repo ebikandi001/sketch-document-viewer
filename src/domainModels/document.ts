@@ -6,4 +6,4 @@ export type Document = {
   name: string;
   artboards: Artboard[];
   numArtboards: number;
-}
+};

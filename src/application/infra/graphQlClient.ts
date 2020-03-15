@@ -1,15 +1,11 @@
 import ApolloClient, { gql } from 'apollo-boost';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import IQueriable from './IQueriable';
-import { Document } from 'domainModels';
-
-type DocumentCollection = {
-  [key: string]: Document;
-};
+import { Document, Artboard } from 'domainModels';
 
 export class GraphQlClient implements IQueriable {
   private client: ApolloClient<any>;
-  private documents: DocumentCollection;
+  private cachedDocument: Document;
 
   constructor() {
     // We'll add a cache layer to client just in case. Review if needed.
@@ -22,21 +18,26 @@ export class GraphQlClient implements IQueriable {
       cache,
     });
 
-    this.documents = {};
+    this.cachedDocument = {} as any; // TODO review type
   }
 
   private storeDocumentInCollection(document: Document) {
-    this.documents[document.shortId] = document;
+    this.cachedDocument = document;
   }
 
   // For simplicity we'll think that the document has been fetched already
-  public getNextArtboard(name: string) {
-    return {} as any;
+  public getNextArtboard(artboardId: number) {
+    const index =
+      artboardId === this.cachedDocument.numArtboards - 1 ? 0 : artboardId + 1;
+
+    return this.cachedDocument.artboards[index];
   }
 
-  // TODO
-  public getPreviousArtboard(name: string) {
-    return {} as any;
+  public getPreviousArtboard(artboardId: number) {
+    const index =
+      artboardId === 0 ? this.cachedDocument.numArtboards - 1 : artboardId - 1;
+
+    return this.cachedDocument.artboards[index];
   }
 
   public async getDocumentByShortId(
@@ -81,7 +82,12 @@ export class GraphQlClient implements IQueriable {
       const modeledDocument = {
         shortId: id,
         name: document.name,
-        artboards: document.artboards.entries,
+        artboards: document.artboards.entries.map(
+          (item: Artboard, index: number) => ({
+            id: index,
+            ...item,
+          })
+        ),
         numArtboards: document.artboards.entries.length,
       };
 

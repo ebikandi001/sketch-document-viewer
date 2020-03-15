@@ -11,6 +11,7 @@ type File = Thumbnail & {
 };
 
 export type Artboard = {
+  id: number;
   name: string;
   isArtboard: boolean;
   files: File[];
