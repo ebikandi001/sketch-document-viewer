@@ -1,12 +1,7 @@
-import styled from 'styled-components';
-import { ComponentStyleProps } from '../theme';
-
-export type ImageProps = ComponentStyleProps & {
+import React from 'react';
+export type ImageProps = {
   src: string;
+  alt: string;
 };
 
-export const Image = styled.img.attrs({
-  src: (props: ImageProps) => props.src,
-} as any)`
-  height: 42px;
-`;
+export const Image = (props: any) => <img src={props.src} alt={props.alt} />;
