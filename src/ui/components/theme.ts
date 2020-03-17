@@ -4,7 +4,6 @@ type Theme = {
 };
 
 export type ComponentStyleProps = {
-  style?: {};
   theme: Theme;
 };
 export const theme = {};
