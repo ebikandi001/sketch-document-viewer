@@ -1,2 +1,3 @@
-export { ArtboardDetailBar } from './ArtboardDetailBar';
-export { DocumentTitle } from './DocumentTitle';
+export * from './ArtboardDetailBar';
+export * from './DocumentTitle';
+export * from './ThumbnailGrid';
