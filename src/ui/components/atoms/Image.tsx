@@ -12,7 +12,7 @@ const ImageContainer = styled.div`
   img {
     max-width: 100%;
     height: auto;
-    .clickable {
+    &.clickable {
       cursor: ${({ onClick }: any) => (onClick ? 'pointer' : 'auto')};
     }
   }
