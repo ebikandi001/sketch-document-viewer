@@ -14,6 +14,7 @@ const TitleContainer = styled.div`
     height: auto;
   }
   & > .title__label {
+    margin-left: 2%;
     text-align: left;
   }
 `;
