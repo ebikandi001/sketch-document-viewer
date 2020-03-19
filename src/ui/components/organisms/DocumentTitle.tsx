@@ -21,7 +21,7 @@ const TitleContainer = styled.div`
   }
 `;
 
-export const Title = () => (
+export const DocumentTitle = () => (
   <TitleContainer className="title">
     <Image src={SketchLogo} className="title__logo" />
     <Label text="Title" isBold={true} className="title__label" />
