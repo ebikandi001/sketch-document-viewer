@@ -8,19 +8,19 @@ const TitleContainer = styled.div`
   flex-direction: row;
   align-items: center;
 
-  & > img {
+  & > .title__logo {
     margin: 0 2% 0 2%;
     max-width: 1.5em;
     height: auto;
   }
-  & > label {
+  & > .title__label {
     text-align: left;
   }
 `;
 
 export const Title = () => (
-  <TitleContainer>
-    <Image src={SketchLogo} />
-    <Label text="Title" isBold={true} />
+  <TitleContainer className="title">
+    <Image src={SketchLogo} className="title__logo" />
+    <Label text="Title" isBold={true} className="title__label" />
   </TitleContainer>
 );
