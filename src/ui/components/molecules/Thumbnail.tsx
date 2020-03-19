@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Label, LabelProps, Image, ImageProps } from '../atoms';
 
-const ArtboardContainer = styled.div`
+export type ThumbnailProps = { image: ImageProps; label: LabelProps };
+
+const ThumbnailContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 40vh;
-  width: 20vw;
-  padding: 2vh 2vw;
+  height: 100%;
+  max-width: 150px;
+  padding: 1%;
   .artboard__image {
     flex-grow: 1;
     vertical-align: middle;
@@ -16,15 +18,13 @@ const ArtboardContainer = styled.div`
   }
 
   .artboard__label {
-    bottom: 1vh;
+    bottom: 1%;
   }
 `;
 
-type ArtboardProps = { image: ImageProps; label: LabelProps };
-
-export const Artboard = (props: ArtboardProps) => (
-  <ArtboardContainer className="artboard">
+export const Thumbnail = (props: ThumbnailProps) => (
+  <ThumbnailContainer className="artboard">
     <Image {...props.image} className="artboard__image" />
     <Label {...props.label} className="artboard__label" />
-  </ArtboardContainer>
+  </ThumbnailContainer>
 );

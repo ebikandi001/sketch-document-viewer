@@ -1,3 +1,3 @@
-export { Artboard } from './Artboard';
-export { Navigation } from './Navigation';
-export { CloseButton } from './CloseButton';
+export * from './Thumbnail';
+export * from './Navigation';
+export * from './CloseButton';
