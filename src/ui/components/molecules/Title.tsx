@@ -8,12 +8,12 @@ const TitleContainer = styled.div`
   flex-direction: row;
   align-items: center;
 
-  & > .title__logo {
+  .title__logo {
     margin: 0 2% 0 2%;
     max-width: 1.5em;
     height: auto;
   }
-  & > .title__label {
+  .title__label {
     margin-left: 2%;
     text-align: left;
   }

@@ -8,14 +8,14 @@ const ArtboardContainer = styled.div`
   height: 40vh;
   width: 20vw;
   padding: 2vh 2vw;
-  & > .artboard__image {
+  .artboard__image {
     flex-grow: 1;
     vertical-align: middle;
     max-width: 100%;
     height: auto;
   }
 
-  & > .artboard__label {
+  .artboard__label {
     bottom: 1vh;
   }
 `;

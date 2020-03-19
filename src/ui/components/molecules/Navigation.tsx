@@ -16,7 +16,6 @@ const NavigationContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 8vw;
 `;
 
 export const Navigation = ({ goPrev, goNext, className }: NavigationProps) => (
