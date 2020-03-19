@@ -8,9 +8,9 @@ export type LabelProps = ComponentStyleProps & {
 
 const StyledLabel = styled.label`
   font-weight: ${(props: LabelProps) =>
-    props.isBold ? 'bold' : props.theme.fontWeight};
+    props.isBold ? 'bold' : props.theme?.fontWeight};
   color: ${(props: LabelProps) =>
-    props.isBold ? 'black' : props.theme.fontWeight};
+    props.isBold ? 'black' : props.theme?.fontWeight};
 `;
 
 // TODO check any
