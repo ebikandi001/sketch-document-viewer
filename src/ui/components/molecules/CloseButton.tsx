@@ -7,9 +7,7 @@ type CloseButtonProps = {
   onClose: any;
 };
 
-const CloseContainer = styled.div`
-  border: solid;
-`;
+const CloseContainer = styled.div``;
 
 export const CloseButton = ({ onClose }: CloseButtonProps) => (
   <CloseContainer className="closebutton">
