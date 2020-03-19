@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Label } from '../atoms';
+import { Image, Label } from '../atoms'; // TODO: organism importing atoms?
 import styled from 'styled-components';
 import SketchLogo from '../assets/sketch-logo.svg';
 
