@@ -9,8 +9,12 @@ export type ImageProps = ComponentStyleProps & {
 };
 
 const ImageContainer = styled.div`
-  .clickable {
-    cursor: ${({ onClick }: any) => (onClick ? 'pointer' : 'auto')};
+  img {
+    max-width: 100%;
+    height: auto;
+    .clickable {
+      cursor: ${({ onClick }: any) => (onClick ? 'pointer' : 'auto')};
+    }
   }
 `;
 
