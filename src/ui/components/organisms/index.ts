@@ -1,0 +1,1 @@
+export { ArtboardDetailBar } from './ArtboardDetailBar';
