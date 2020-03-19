@@ -2,21 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import { Label, LabelProps, Image, ImageProps } from '../atoms';
 
-const ArtBoardContainer = styled.div`
-  & > img {
+const ArtboardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: 20vw;
+  padding: 2vh 2vw;
+  & > .artboard__image {
+    flex-grow: 1;
     vertical-align: middle;
+    max-width: 100%;
+    height: auto;
   }
 
-  & > label {
+  & > .artboard__label {
     bottom: 1vh;
   }
 `;
 
-type ArtBoardProps = { image: LabelProps; label: ImageProps };
+type ArtboardProps = { image: ImageProps; label: LabelProps };
 
-export const ArtBoard = (props: ArtBoardProps) => (
-  <ArtBoardContainer>
-    <Image {...props.image} />
-    <Label {...props.label} />
-  </ArtBoardContainer>
+export const Artboard = (props: ArtboardProps) => (
+  <ArtboardContainer className="artboard">
+    <Image {...props.image} className="artboard__image" />
+    <Label {...props.label} className="artboard__label" />
+  </ArtboardContainer>
 );
