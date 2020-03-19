@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Image } from '../atoms';
+import { ComponentStyleProps } from '../theme';
 import Close from '../assets/close.svg';
 
-type CloseButtonProps = {
-  onClose: any;
+type CloseButtonProps = ComponentStyleProps & {
+  onClick: any;
 };
 
 const CloseContainer = styled.div``;
 
-export const CloseButton = ({ onClose }: CloseButtonProps) => (
-  <CloseContainer className="closebutton">
-    <Image src={Close} onClick={onClose} className="closebutton__button" />
+export const CloseButton = ({ onClick, className }: CloseButtonProps) => (
+  <CloseContainer className={className}>
+    <Image src={Close} onClick={onClick} className={`${className}__button`} />
   </CloseContainer>
 );
