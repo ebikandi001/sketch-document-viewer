@@ -1,18 +1,31 @@
 import React from 'react';
-export type ImageProps = {
+import styled from 'styled-components';
+import { ComponentStyleProps } from '../theme';
+
+export type ImageProps = ComponentStyleProps & {
   src: string;
-  alt: string;
-  onClick?: () => {};
+  alt?: string;
+  onClick?: any;
 };
 
-export const Image = ({ src, alt, onClick }: any) => {
+const ImageContainer = styled.div`
+  .clickable {
+    cursor: ${({ onClick }: any) => (onClick ? 'pointer' : 'auto')};
+  }
+`;
+
+export const Image = ({ className, src, alt = '', onClick }: ImageProps) => {
   const handleClick = (...args: any[]) => {
     try {
       onClick(args);
     } catch (e) {
-      console.error('[Image]: Bad onClick', e);
+      console.warn('[Image]: Bad onClick', e);
     }
   };
 
-  return <img src={src} alt={alt} onClick={handleClick} />;
+  return (
+    <ImageContainer onClick={handleClick} className={className}>
+      <img src={src} alt={alt} className={onClick ? 'clickable' : ''} />
+    </ImageContainer>
+  );
 };
