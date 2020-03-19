@@ -3,7 +3,12 @@ type Theme = {
   color: string;
 };
 
+/**
+ * TODO
+ * Review optional
+ */
 export type ComponentStyleProps = {
-  theme: Theme;
+  className?: string;
+  theme?: Theme;
 };
 export const theme = {};
