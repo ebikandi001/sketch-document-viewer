@@ -7,14 +7,16 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-
+  padding: 1%;
   .title__logo {
-    margin: 0 2% 0 2%;
     max-width: 1.5em;
     height: auto;
+    img {
+      vertical-align: middle;
+    }
   }
   .title__label {
-    margin-left: 2%;
+    margin-left: 3%;
     text-align: left;
   }
 `;
