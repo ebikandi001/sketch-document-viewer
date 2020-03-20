@@ -2,17 +2,16 @@ import { useState, useEffect } from 'react';
 
 export const useAspectRatio = () => {
   const isClient = typeof window === 'object';
-
   function getSize() {
     return {
-      windowWidth: isClient ? window.innerWidth - 10 : 0,
-      windowHeight: isClient ? window.innerHeight - 10 : 0,
+      windowWidth: isClient ? window.innerWidth : 0,
+      windowHeight: isClient ? window.innerHeight : 0,
     };
   }
 
   const getAspectRatio = () => {
     const { windowWidth, windowHeight } = getSize();
-    const RATIO = 1.6;
+    const RATIO = 1.4;
     const aspectWidth = windowHeight * RATIO;
 
     if (aspectWidth > windowWidth) {
