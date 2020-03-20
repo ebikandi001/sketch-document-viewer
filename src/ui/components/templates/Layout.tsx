@@ -7,9 +7,10 @@ type AspectRatioProps = {
   height: string;
 };
 
+// TODO check types
 type LayoutProps = {
-  header: React.Component;
-  content: React.Component;
+  header: any;
+  content: any;
 };
 
 const Grid = styled.div`
@@ -33,6 +34,8 @@ const LayoutAspectRatio = styled.div`
   .layout__content {
     background-image: linear-gradient(rgba(235, 235, 235, 1), white);
     box-shadow: 0px 1px 8px #999999 inset;
+    overflow-x: hidden;
+    overflow-y: scroll; /* TODO: Is this needed? no scrollbar on example Document*/
   }
 `;
 
