@@ -14,12 +14,21 @@ const Grid = styled.div`
   justify-content: center;
 `;
 
-const LayoutContent = styled.div`
+const LayoutAspectRatio = styled.div`
   background-color: white;
-  border: solid green;
   align-self: center;
   width: ${(props: LayoutProps) => props.width};
   height: ${(props: LayoutProps) => props.height};
+  display: grid;
+  grid-template-rows: 7% 93%;
+  align-items: stretch;
+  .layout__header {
+    background-color: rgba(247, 247, 247, 1);
+  }
+  .layout__content {
+    background-image: linear-gradient(rgba(235, 235, 235, 1), white);
+    box-shadow: 0px 1px 8px #999999 inset;
+  }
 `;
 
 export const Layout = () => {
@@ -27,7 +36,10 @@ export const Layout = () => {
 
   return (
     <Grid>
-      <LayoutContent className="layout" width={width} height={height} />
+      <LayoutAspectRatio className="layout" width={width} height={height}>
+        <div className="layout__header" />
+        <div className="layout__content" />
+      </LayoutAspectRatio>
     </Grid>
   );
 };
