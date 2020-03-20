@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { ComponentStyleProps } from '../theme';
 
 export type LabelProps = ComponentStyleProps & {
-  isBold: boolean;
+  text: string;
+  isBold?: boolean;
 };
 
 const StyledLabel = styled.label`
@@ -11,9 +12,10 @@ const StyledLabel = styled.label`
     props.isBold ? 'bold' : props.theme?.fontWeight};
   color: ${(props: LabelProps) =>
     props.isBold ? 'black' : props.theme?.fontWeight};
+  font-size: min(1vw, 16px);
 `;
 
 // TODO check any
-export const Label = (props: any) => (
+export const Label = (props: LabelProps) => (
   <StyledLabel {...props}>{props.text}</StyledLabel>
 );
