@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 // Credits: https://usehooks.com/useWindowSize/
@@ -37,13 +37,10 @@ type LayoutProps = {
 };
 
 const FlexColumn = styled.div`
-  display:flex:
-  flex-direction:column;
-`;
-
-const FlexRow = styled.div`
-  display:flex:
-  flex-direction:row;
+  display: flex:
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
 `;
 
 const LayoutContent = styled.div`
@@ -76,9 +73,7 @@ export const Layout = () => {
 
   return (
     <FlexColumn>
-      <FlexRow>
-        <LayoutContent className="layout" width={width} height={height} />
-      </FlexRow>
+      <LayoutContent className="layout" width={width} height={height} />
     </FlexColumn>
   );
 };
