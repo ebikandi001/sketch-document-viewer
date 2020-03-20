@@ -8,12 +8,12 @@ type ThumbnailGridProps = {
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 20vh));
   justify-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: start;
-  gap: 30px;
-  padding: 20px;
+  gap: 1%;
+  padding: 1%;
 `;
 
 export const ThumbnailGrid = ({ items }: ThumbnailGridProps) => (
