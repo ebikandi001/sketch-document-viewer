@@ -32,30 +32,40 @@ const useWindowSize = () => {
 // ------------------
 
 type LayoutProps = {
-  width: number;
-  height: number;
+  width: string;
+  height: string;
 };
 
-const Content = styled.div`
+const FlexColumn = styled.div`
+  display:flex:
+  flex-direction:column;
+`;
+
+const FlexRow = styled.div`
+  display:flex:
+  flex-direction:row;
+`;
+
+const LayoutContent = styled.div`
+  background-color: white;
   border: solid green;
-  width: ${({ width }: LayoutProps) => `${width}px`};
-  height: ${({ height }: LayoutProps) => `${height}px`};
+  width: ${(props: LayoutProps) => props.width};
+  height: ${(props: LayoutProps) => props.height};
 `;
 
 const getAspectRatio = ({ windowWidth, windowHeight }: any) => {
   const RATIO = 1.6;
   const aspectWidth = windowHeight * RATIO;
+
   if (aspectWidth > windowWidth) {
-    console.log('NKO zabalei');
     return {
-      width: windowWidth,
-      height: windowWidth / RATIO,
+      width: `${windowWidth}px`,
+      height: `${windowWidth / RATIO}px`,
     };
   } else {
-    console.log('NKO alt');
     return {
-      width: aspectWidth,
-      height: windowHeight,
+      width: `${aspectWidth}px`,
+      height: `${windowHeight}px`,
     };
   }
 };
@@ -64,5 +74,11 @@ export const Layout = () => {
   const size = useWindowSize();
   const { width, height } = getAspectRatio(size);
 
-  return <Content width={width} height={height} />;
+  return (
+    <FlexColumn>
+      <FlexRow>
+        <LayoutContent className="layout" width={width} height={height} />
+      </FlexRow>
+    </FlexColumn>
+  );
 };
