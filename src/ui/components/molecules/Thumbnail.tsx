@@ -8,7 +8,6 @@ const ThumbnailContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-width: 150px;
   padding: 1%;
   .artboard__image {
     flex-grow: 1;
