@@ -2,9 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAspectRatio } from './useAspectRatio';
 
-type LayoutProps = {
+type AspectRatioProps = {
   width: string;
   height: string;
+};
+
+type LayoutProps = {
+  header: React.Component;
+  content: React.Component;
 };
 
 const Grid = styled.div`
@@ -17,8 +22,8 @@ const Grid = styled.div`
 const LayoutAspectRatio = styled.div`
   background-color: white;
   align-self: center;
-  width: ${(props: LayoutProps) => props.width};
-  height: ${(props: LayoutProps) => props.height};
+  width: ${(props: AspectRatioProps) => props.width};
+  height: ${(props: AspectRatioProps) => props.height};
   display: grid;
   grid-template-rows: 7% 93%;
   align-items: stretch;
@@ -31,14 +36,14 @@ const LayoutAspectRatio = styled.div`
   }
 `;
 
-export const Layout = () => {
+export const Layout = ({ header, content }: LayoutProps) => {
   const { width, height } = useAspectRatio();
 
   return (
     <Grid>
       <LayoutAspectRatio className="layout" width={width} height={height}>
-        <div className="layout__header" />
-        <div className="layout__content" />
+        <div className="layout__header">{header || 'Place header here'}</div>
+        <div className="layout__content">{content || 'Place content here'}</div>
       </LayoutAspectRatio>
     </Grid>
   );
