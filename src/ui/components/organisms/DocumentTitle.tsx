@@ -9,7 +9,7 @@ const TitleContainer = styled.div`
   align-items: center;
   padding: 1%;
   .title__logo {
-    max-width: 1.5em;
+    width: 1.5vw;
     height: auto;
     img {
       vertical-align: middle;
