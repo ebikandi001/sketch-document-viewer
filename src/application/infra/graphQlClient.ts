@@ -64,9 +64,7 @@ export class GraphQlClient implements IDocumentRepository {
       : artboardId - 1;
   }
 
-  public async getDocumentByShortId(
-    id: string = 'Y8wDM'
-  ): Promise<Document | any> {
+  public async getDocumentByShortId(id: string): Promise<Document | any> {
     // Hijacking ApolloQueryResultType as any
     try {
       const result = await this.client.query({

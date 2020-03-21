@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Label, LabelProps, Image, ImageProps } from '../atoms';
+import { Label, Image } from '../atoms';
 
-export type ThumbnailProps = { image: ImageProps; label: LabelProps };
+export type ThumbnailProps = { picture: any; name: string };
 
 const ThumbnailContainer = styled.div`
   display: flex;
@@ -18,12 +18,13 @@ const ThumbnailContainer = styled.div`
 
   .artboard__label {
     bottom: 1%;
+    text-align: center;
   }
 `;
 
 export const Thumbnail = (props: ThumbnailProps) => (
   <ThumbnailContainer className="artboard">
-    <Image {...props.image} className="artboard__image" />
-    <Label {...props.label} className="artboard__label" />
+    <Image src={props.picture.src} className="artboard__image" />
+    <Label text={props.name} className="artboard__label" />
   </ThumbnailContainer>
 );

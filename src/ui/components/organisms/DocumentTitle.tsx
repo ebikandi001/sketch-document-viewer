@@ -3,6 +3,10 @@ import { Image, Label } from '../atoms'; // TODO: organism importing atoms?
 import styled from 'styled-components';
 import SketchLogo from '../assets/sketch-logo.svg';
 
+type TitleProps = {
+  text: string;
+};
+
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -21,9 +25,9 @@ const TitleContainer = styled.div`
   }
 `;
 
-export const DocumentTitle = () => (
+export const DocumentTitle = ({ text = '' }: TitleProps) => (
   <TitleContainer className="title">
     <Image src={SketchLogo} className="title__logo" />
-    <Label text="Title" isBold={true} className="title__label" />
+    <Label text={text} isBold={true} className="title__label" />
   </TitleContainer>
 );
