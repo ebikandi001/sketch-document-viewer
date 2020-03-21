@@ -1,9 +1,9 @@
 import ApolloClient, { gql } from 'apollo-boost';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import IQueriable from './IQueriable';
+import IDocumentRepository from './IDocumentRepository';
 import { Document, Artboard } from 'domainModels';
 
-export class GraphQlClient implements IQueriable {
+export class GraphQlClient implements IDocumentRepository {
   private client: ApolloClient<any>;
   private cachedDocument: Document;
 
