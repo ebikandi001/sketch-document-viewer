@@ -1,11 +1,15 @@
 import React from 'react';
 import { Document } from 'domainModels';
-import * as appService from 'application';
-import { DOCUMENT_FETCHED, NEXT, PREVIOUS, Action, Dispatch } from './actions';
+
+import {
+  DOCUMENT_FETCHED,
+  SET_CURRENT_ARTBOARD,
+  Action,
+  Dispatch,
+} from './Actions';
 
 type State = Document & {
   currentArtboard: number;
-  showDetails: boolean;
 };
 type DocumentProviderProps = { children: React.ReactNode };
 
@@ -15,7 +19,6 @@ const initialState: State = {
   artboards: [],
   numArtboards: 0,
   currentArtboard: 0,
-  showDetails: false,
 };
 const DocumentStateContext = React.createContext<State | undefined>(undefined);
 const DocumentDispatchContext = React.createContext<Dispatch | undefined>(
@@ -26,15 +29,10 @@ const documentReducer = (state: State, action: Action) => {
   switch (action.type) {
     case DOCUMENT_FETCHED:
       return { ...state, ...action.payload };
-    case NEXT:
+    case SET_CURRENT_ARTBOARD:
       return {
         ...state,
-        currentArtboard: appService.getNextArtboard(action.payload),
-      };
-    case PREVIOUS:
-      return {
-        ...state,
-        currentArtboard: appService.getPreviousArtboard(action.payload),
+        currentArtboard: action.payload,
       };
     default:
       console.warn(`Unhandled action type: ${action.type}`);

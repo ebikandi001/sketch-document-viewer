@@ -1,5 +1,5 @@
 import { getDocumentById } from 'application';
-import { DOCUMENT_FETCHED, Dispatch } from './actions';
+import { DOCUMENT_FETCHED, Dispatch } from './Actions';
 
 export const getDocument = async (documentId: string, dispatch: Dispatch) => {
   const fetchedDocument = await getDocumentById(documentId);
