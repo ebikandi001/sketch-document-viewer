@@ -51,6 +51,10 @@ export class GraphQlClient implements IDocumentRepository {
     };
   }
 
+  public getArtboard(artboardId: number) {
+    return this.cachedDocument.artboards[artboardId];
+  }
+
   // For simplicity we'll think that the document has been fetched already
   public getNextArtboard(artboardId: number) {
     return artboardId === this.cachedDocument.numArtboards - 1
