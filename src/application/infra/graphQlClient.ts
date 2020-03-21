@@ -53,17 +53,15 @@ export class GraphQlClient implements IDocumentRepository {
 
   // For simplicity we'll think that the document has been fetched already
   public getNextArtboard(artboardId: number) {
-    const index =
-      artboardId === this.cachedDocument.numArtboards - 1 ? 0 : artboardId + 1;
-
-    return this.cachedDocument.artboards[index];
+    return artboardId === this.cachedDocument.numArtboards - 1
+      ? 0
+      : artboardId + 1;
   }
 
   public getPreviousArtboard(artboardId: number) {
-    const index =
-      artboardId === 0 ? this.cachedDocument.numArtboards - 1 : artboardId - 1;
-
-    return this.cachedDocument.artboards[index];
+    return artboardId === 0
+      ? this.cachedDocument.numArtboards - 1
+      : artboardId - 1;
   }
 
   public async getDocumentByShortId(

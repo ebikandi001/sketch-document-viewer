@@ -3,7 +3,7 @@ import { Document, SimplifiedArtboard } from 'domainModels';
 export default interface IDocumentRepository {
   getDocumentByShortId: (id: string) => Promise<Document>;
 
-  getNextArtboard: (artboardId: number) => SimplifiedArtboard;
+  getNextArtboard: (artboardId: number) => number;
 
-  getPreviousArtboard: (artboardId: number) => SimplifiedArtboard;
+  getPreviousArtboard: (artboardId: number) => number;
 }
