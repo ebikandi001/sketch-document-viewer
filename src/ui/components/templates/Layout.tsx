@@ -33,7 +33,6 @@ const Grid = styled.div`
       background-image: linear-gradient(rgba(235, 235, 235, 1), white);
       box-shadow: 0px 1px 8px #999999 inset;
       overflow-x: hidden;
-      overflow-y: scroll; /* TODO: Is this needed? no scrollbar on example Document*/
     }
   }
 `;
