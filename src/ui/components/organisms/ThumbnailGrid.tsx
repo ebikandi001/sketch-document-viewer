@@ -18,8 +18,10 @@ const GridContainer = styled.div`
 
 export const ThumbnailGrid = ({ items }: ThumbnailGridProps) => (
   <GridContainer>
-    {items.map((itemProps, index) => (
-      <Thumbnail {...itemProps} key={index} />
-    ))}
+    {items.length ? (
+      items.map((itemProps, index) => <Thumbnail {...itemProps} key={index} />)
+    ) : (
+      <h1>Loading...</h1>
+    )}
   </GridContainer>
 );

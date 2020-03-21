@@ -11,7 +11,7 @@ const StyledLabel = styled.label`
   font-weight: ${(props: LabelProps) =>
     props.isBold ? 'bold' : props.theme?.fontWeight};
   color: ${(props: LabelProps) =>
-    props.isBold ? 'black' : props.theme?.fontWeight};
+    props.isBold ? 'black' : props.theme?.color};
   font-size: min(1vw, 16px);
 `;
 

@@ -6,7 +6,7 @@ import { Layout } from '../components/templates';
 export const DocumentView = (props: any) => {
   const doc = useDocumentState();
   const dispatch = useDocumentDispatch();
-  console.log('DocumentView', doc);
+
   useEffect(() => {
     if (!doc?.shortId) {
       getDocument('Y8wDM', dispatch);

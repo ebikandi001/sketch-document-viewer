@@ -12,7 +12,8 @@ type ArtboardStyleProps = {
 
 const ArtboardContainer = styled.div`
   padding: 2%;
-  height: min(100%, ${(props: ArtboardStyleProps) => props.imgHeight}px);
+  height: min(90%, ${(props: ArtboardStyleProps) => props.imgHeight}px);
+  text-align: center;
   .artboard__img {
     height: 100%;
     img {
