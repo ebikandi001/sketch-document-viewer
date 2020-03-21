@@ -1,18 +1,20 @@
-// TODO recheck after getting query-result
-type Thumbnail = {
+type Picture = {
   url: string;
   height: string;
-  width: string;
 };
 
-type File = Thumbnail & {
-  scale: string;
-  thumbnails: Thumbnail[];
+type File = Picture & {
+  scale: number;
 };
 
 export type Artboard = {
   id: number;
   name: string;
-  isArtboard: boolean;
   files: File[];
+};
+
+export type SimplifiedArtboard = {
+  id: number;
+  name: string;
+  picture: Picture;
 };

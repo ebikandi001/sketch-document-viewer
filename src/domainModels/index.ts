@@ -1,2 +1,2 @@
 export { Document } from './document';
-export { Artboard } from './artboard';
+export { Artboard, SimplifiedArtboard } from './artboard';
