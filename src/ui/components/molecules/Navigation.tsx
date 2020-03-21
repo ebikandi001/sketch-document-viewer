@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ComponentStyleProps } from '../theme';
-import { Image } from '../atoms';
+import { Image, Label } from '../atoms';
 import ArrowLeft from '../assets/arrow-left.svg';
 import ArrowRight from '../assets/arrow-right.svg';
 import Breadcrumb from '../assets/breadcrumb.svg';
@@ -21,9 +21,9 @@ const NavigationContainer = styled.div`
 export const Navigation = ({ goPrev, goNext, className }: NavigationProps) => (
   <NavigationContainer className={className}>
     <Image src={ArrowLeft} className={`${className}__left`} onClick={goPrev} />
-    4
+    <Label text="4" />
     <Image src={Breadcrumb} className={`${className}__separator`} />
-    10
+    <Label text="10" />
     <Image
       src={ArrowRight}
       className={`${className}__right`}

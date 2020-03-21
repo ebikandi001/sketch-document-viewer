@@ -11,12 +11,18 @@ type DetailBarProps = {
 };
 
 const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1%;
+  align-items: center;
+  img {
+    height: max(1vh, 1vw);
+    width: auto;
+  }
+
   & > * {
-    margin: 0 1%;
+    margin: 0 2%;
   }
 
   .detail-bar__navigation {
