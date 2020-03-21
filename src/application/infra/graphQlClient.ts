@@ -23,14 +23,28 @@ export class GraphQlClient implements IDocumentRepository {
 
   // TODO review any
   private modelDataToDocument(data: any): Document {
+    const getPicture = (artboard: Artboard) => {
+      const pic = artboard.files.find(file => file.scale === 1) || {
+        url: '',
+        height: 0,
+      };
+
+      return {
+        src: pic.url,
+        imgHeight: pic.height,
+      };
+    };
+
     const { document } = data.share.version;
+
     return {
       shortId: data.share.shortId,
       name: document.name,
       artboards: document.artboards.entries.map(
         (item: Artboard, index: number) => ({
           id: index,
-          ...item,
+          name: item.name,
+          picture: getPicture(item),
         })
       ),
       numArtboards: document.artboards.entries.length,
