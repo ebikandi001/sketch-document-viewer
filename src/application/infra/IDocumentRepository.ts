@@ -1,9 +1,9 @@
-import { Document, Artboard } from 'domainModels';
+import { Document, SimplifiedArtboard } from 'domainModels';
 
 export default interface IDocumentRepository {
   getDocumentByShortId: (id: string) => Promise<Document>;
 
-  getNextArtboard: (artboardId: number) => Artboard;
+  getNextArtboard: (artboardId: number) => SimplifiedArtboard;
 
-  getPreviousArtboard: (artboardId: number) => Artboard;
+  getPreviousArtboard: (artboardId: number) => SimplifiedArtboard;
 }
