@@ -29,7 +29,7 @@ const Container = styled.div`
   }
 `;
 
-export const ArtboardDetailBar = ({
+export const NavigationBar = ({
   onClose,
   goPrev,
   goNext,
