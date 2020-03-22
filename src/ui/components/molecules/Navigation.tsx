@@ -7,9 +7,11 @@ import ArrowRight from '../assets/arrow-right.svg';
 import Breadcrumb from '../assets/breadcrumb.svg';
 import { Link } from 'react-router-dom';
 
-type NavigationProps = ComponentStyleProps & {
-  goPrevRoute: any;
-  goNextRoute: any;
+export type NavigationProps = ComponentStyleProps & {
+  goPrevRoute: string;
+  goNextRoute: string;
+  current: number;
+  total: number;
 };
 
 const NavigationContainer = styled.div`
@@ -22,15 +24,17 @@ const NavigationContainer = styled.div`
 export const Navigation = ({
   goPrevRoute,
   goNextRoute,
+  current,
+  total,
   className,
 }: NavigationProps) => (
   <NavigationContainer className={className}>
     <Link to={goPrevRoute}>
       <Image src={ArrowLeft} className={`${className}__left`} />
     </Link>
-    <Label text="4" />
+    <Label text={current.toString()} />
     <Image src={Breadcrumb} className={`${className}__separator`} />
-    <Label text="10" />
+    <Label text={total.toString()} />
     <Link to={goNextRoute}>
       <Image src={ArrowRight} className={`${className}__right`} />
     </Link>

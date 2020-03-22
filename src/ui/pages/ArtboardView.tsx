@@ -21,6 +21,8 @@ export const ArtboardView = ({
     goPrevRoute: `/artboard/${prevId}`,
     goNextRoute: `/artboard/${nextId}`,
     text: currentArtboard?.name || '',
+    current: currentId + 1,
+    total: numArtboards,
   };
 
   const header = <NavigationBar {...NavigationBarProps} />;

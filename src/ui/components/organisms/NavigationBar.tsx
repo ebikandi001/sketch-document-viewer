@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CloseButton, Navigation } from '../molecules';
+import { CloseButton, Navigation, NavigationProps } from '../molecules';
 import { Label } from '../atoms';
 
-type DetailBarProps = {
+type DetailBarProps = NavigationProps & {
   closeRoute: string;
-  goPrevRoute: string;
-  goNextRoute: string;
   text: string;
 };
 
@@ -39,6 +37,8 @@ export const NavigationBar = ({
   closeRoute,
   goPrevRoute,
   goNextRoute,
+  current,
+  total,
   text,
 }: DetailBarProps) => (
   <Container className="detail-bar">
@@ -47,6 +47,8 @@ export const NavigationBar = ({
       className="detail-bar__navigation"
       goPrevRoute={goPrevRoute}
       goNextRoute={goNextRoute}
+      current={current}
+      total={total}
     />
     <Label className="detail-bar__label" text={text} isBold={true} />
   </Container>
