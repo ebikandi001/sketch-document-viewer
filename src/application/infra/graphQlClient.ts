@@ -5,7 +5,6 @@ import { Document, Artboard } from 'domainModels';
 
 export class GraphQlClient implements IDocumentRepository {
   private client: ApolloClient<any>;
-  private cachedDocument: Document;
 
   constructor() {
     // We'll add a cache layer to client just in case. Review if needed.
@@ -17,8 +16,6 @@ export class GraphQlClient implements IDocumentRepository {
       uri: 'https://graphql.sketch.cloud/api', // TODO set the endpoint in an .env file
       cache,
     });
-
-    this.cachedDocument = {} as any; // TODO review any
   }
 
   // TODO review any
@@ -49,23 +46,6 @@ export class GraphQlClient implements IDocumentRepository {
       ),
       numArtboards: document.artboards.entries.length,
     };
-  }
-
-  public getArtboard(artboardId: number) {
-    return this.cachedDocument.artboards[artboardId];
-  }
-
-  // For simplicity we'll think that the document has been fetched already
-  public getNextArtboard(artboardId: number) {
-    return artboardId === this.cachedDocument.numArtboards - 1
-      ? 0
-      : artboardId + 1;
-  }
-
-  public getPreviousArtboard(artboardId: number) {
-    return artboardId === 0
-      ? this.cachedDocument.numArtboards - 1
-      : artboardId - 1;
   }
 
   public async getDocumentByShortId(id: string): Promise<Document | any> {
@@ -103,11 +83,7 @@ export class GraphQlClient implements IDocumentRepository {
         `,
       });
 
-      const modeledDocument = this.modelDataToDocument(result.data);
-
-      this.cachedDocument = modeledDocument;
-
-      return modeledDocument;
+      return this.modelDataToDocument(result.data);
     } catch (e) {
       console.warn('[GraphQl]: getDocumentByShortId went wrong', e);
       return {};

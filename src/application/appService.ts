@@ -8,15 +8,3 @@ export const getDocumentById = async (id: string) => {
   console.log('[AppService]: getDocumentById', document);
   return document;
 };
-
-export const getArtboard = (artboardId: number) => {
-  return documentClient.getArtboard(artboardId);
-};
-
-export const getNextArtboard = (artboardId: number) => {
-  return documentClient.getNextArtboard(artboardId);
-};
-
-export const getPreviousArtboard = (artboardId: number) => {
-  return documentClient.getPreviousArtboard(artboardId);
-};
