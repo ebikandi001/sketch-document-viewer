@@ -7,6 +7,8 @@ This project has been developed for the Sketch frontender application process. I
 - Documents are requested based on the url param. A link has been introduced in the title header to switch between documents. Also, each document will only be request once on each load and will be cached. So, we can be switching 1000 times without worrying to do a lot of requests.
 - Some testing have been introduced. There is not much, but it works as an example.
 
+I would like to say that the **original window resizing and size responsiveness** from the prototype has been respected and the layout always mantains an aspect ratio close to 4:3. I would preffer using a responsive column with liquid margins to wrapp the contenct, specially for the ArtboardGrid. But as the prototype was like this, I prefered to maintain it as it is.
+
 Also, a decision has been taken out of the given example. In the given prototype, the document has only 10 artboards which fit in the content grid, but the real one fetched from the api has much more. And these do not fit in the grid. So, in this case, it has been decided to show a vertical **scrollbar**.
 
 In this document here I will defend my solution. First, I will explain why I took this approach and the problems I have encountered. After that, I want to list some future work and ideas I have in mind and I would take if I had the time. Finally, we'll go quickly through the steps to run the app.
@@ -99,7 +101,7 @@ It's quite easy to run this code thanks to yarn/npm and React's scripts. So lets
 2. Go to the repo's folder via a terminal window and type `npm install` or `yarn install`.
 3. Run `npm start` or `yarn start`
 
-And that's it, the 3rd step will start a dev-server in your machine and open a browser window with the app there. Additionally, it will point you which on the command promp the urls the app is running.
+And that's it, the 3rd step will start a dev-server in your machine and open a browser window with the app there. Additionally, it will point you which on the command promp the urls the app is running. I would **play resizing the window and navigating through arboards to test the behaviour**.
 
 Another thing you can you is run the tests with `npm test` or `yarn test`. This should run the tests (which are inside the \_\_tests\_\_ folder). Currently there is only the _DocumentView.test.tsx_ implemented.
 
