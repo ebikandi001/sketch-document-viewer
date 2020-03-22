@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDocumentState } from 'adapters';
+import { useDocumentState } from '../../adapters';
 import { NavigationBar, ArtboardDetail } from '../components/organisms';
 import { Layout } from '../components/templates';
 

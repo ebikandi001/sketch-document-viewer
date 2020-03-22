@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document } from 'domainModels';
+import { Document } from '../domainModels';
 
 import {
   DOCUMENT_FETCHED,

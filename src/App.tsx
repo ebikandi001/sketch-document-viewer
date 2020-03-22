@@ -6,7 +6,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { DocumentProvider } from 'adapters';
+import { DocumentProvider } from './adapters';
 import { DocumentView, ArtboardView } from './ui/pages';
 import { theme } from './ui/components/theme';
 
