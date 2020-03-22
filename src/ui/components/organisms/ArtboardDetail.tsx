@@ -12,6 +12,7 @@ type ArtboardStyleProps = {
 
 const ArtboardContainer = styled.div`
   padding: 2%;
+  height: 90%; // fallback for FF
   height: min(90%, ${(props: ArtboardStyleProps) => props.imgHeight}px);
   text-align: center;
   .artboard__img {

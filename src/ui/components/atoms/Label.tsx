@@ -12,6 +12,7 @@ const StyledLabel = styled.label`
     props.isBold ? 'bold' : props.theme?.font.weight};
   color: ${(props: LabelProps) =>
     props.isBold ? 'black' : props.theme?.color};
+  font-size: 1.8vh; // fallback for FF
   font-size: ${(props: LabelProps) => props.theme?.font.sizes.normal};
 `;
 
