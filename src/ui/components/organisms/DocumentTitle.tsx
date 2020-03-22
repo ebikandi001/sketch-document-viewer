@@ -28,7 +28,7 @@ const TitleContainer = styled.div`
     text-align: left;
   }
   .title__link {
-    width: 20%;
+    width: 25%;
     flex-shrink: 1;
     text-decoration: none;
 
