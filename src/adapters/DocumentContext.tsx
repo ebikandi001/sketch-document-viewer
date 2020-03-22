@@ -1,24 +1,18 @@
 import React from 'react';
 import { Document } from '../domainModels';
 
-import {
-  DOCUMENT_FETCHED,
-  SET_CURRENT_ARTBOARD,
-  Action,
-  Dispatch,
-} from './Actions';
+import { DOCUMENT_FETCHED, Action, Dispatch } from './Actions';
 
 type State = Document & {
-  currentArtboard: number;
+  // UI related state props would go here
 };
 type DocumentProviderProps = { children: React.ReactNode };
 
-const initialState: State = {
+const initialState: Document = {
   shortId: '',
   name: '',
   artboards: [],
   numArtboards: 0,
-  currentArtboard: 0,
 };
 const DocumentStateContext = React.createContext<State | undefined>(undefined);
 const DocumentDispatchContext = React.createContext<Dispatch | undefined>(
@@ -29,11 +23,6 @@ const documentReducer = (state: State, action: Action) => {
   switch (action.type) {
     case DOCUMENT_FETCHED:
       return { ...state, ...action.payload };
-    case SET_CURRENT_ARTBOARD:
-      return {
-        ...state,
-        currentArtboard: action.payload,
-      };
     default:
       console.warn(`Unhandled action type: ${action.type}`);
       return state;
