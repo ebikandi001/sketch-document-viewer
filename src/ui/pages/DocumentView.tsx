@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { getDocument, useDocumentState, useDocumentDispatch } from 'adapters';
 import { DocumentTitle, ThumbnailGrid } from '../components/organisms';
