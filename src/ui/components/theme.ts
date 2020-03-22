@@ -1,6 +1,6 @@
 type Theme = {
-  fontWeight: string;
-  color: string;
+  color: any;
+  font: any;
 };
 
 /**
@@ -11,4 +11,10 @@ export type ComponentStyleProps = {
   className?: string;
   theme?: Theme;
 };
-export const theme = {};
+export const theme = {
+  color: '#656465',
+  font: {
+    weight: 'normal',
+    sizes: { normal: 'min(1vw, 16px)', big: 'min(1vw, 32px)' },
+  },
+};

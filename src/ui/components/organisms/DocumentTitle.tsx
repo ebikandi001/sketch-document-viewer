@@ -3,6 +3,7 @@ import { Image, Label } from '../atoms'; // TODO: organism importing atoms?
 import styled from 'styled-components';
 import SketchLogo from '../assets/sketch-logo.svg';
 import { Link } from 'react-router-dom';
+import { ComponentStyleProps } from '../theme';
 
 type TitleProps = {
   text: string;
@@ -26,10 +27,18 @@ const TitleContainer = styled.div`
     padding-left: 3%;
     text-align: left;
   }
-  .link {
+  .title__link {
+    width: 20%;
     flex-shrink: 1;
     text-decoration: none;
-    color: grey;
+
+    .title__label {
+      font-size: ${(props: ComponentStyleProps) => props.theme?.font.sizes.big};
+      cursor: pointer;
+      &:hover {
+        font-weight: bold;
+      }
+    }
   }
 `;
 
@@ -38,8 +47,8 @@ export const DocumentTitle = ({ text, link }: TitleProps) => (
     <Image src={SketchLogo} className="title__logo" />
     <Label text={text} isBold={true} className="title__label" />
     {link ? (
-      <Link to={link} className="link">
-        Go for another one!
+      <Link to={link} className="title__link">
+        <Label text="Go for another document!" className="title__label" />
       </Link>
     ) : null}
   </TitleContainer>

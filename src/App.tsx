@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { DocumentProvider } from 'adapters';
 import { DocumentView, ArtboardView } from './ui/pages';
+import { theme } from './ui/components/theme';
 
 const AppContainer = styled.div`
   background-color: rgb(33, 33, 33);
@@ -22,15 +23,17 @@ const App = () => {
 
   return (
     <AppContainer className="App">
-      <DocumentProvider>
-        <Router>
-          <Switch>
-            {redirect ? <Redirect to="/document/Y8wDM" /> : null}
-            <Route path="/document/:id" component={DocumentView} />
-            <Route path="/artboard/:id" component={ArtboardView} />
-          </Switch>
-        </Router>
-      </DocumentProvider>
+      <ThemeProvider theme={theme}>
+        <DocumentProvider>
+          <Router>
+            <Switch>
+              {redirect ? <Redirect to="/document/Y8wDM" /> : null}
+              <Route path="/document/:id" component={DocumentView} />
+              <Route path="/artboard/:id" component={ArtboardView} />
+            </Switch>
+          </Router>
+        </DocumentProvider>
+      </ThemeProvider>
     </AppContainer>
   );
 };
