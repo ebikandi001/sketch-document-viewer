@@ -5,10 +5,11 @@ import { Image, Label } from '../atoms';
 import ArrowLeft from '../assets/arrow-left.svg';
 import ArrowRight from '../assets/arrow-right.svg';
 import Breadcrumb from '../assets/breadcrumb.svg';
+import { Link } from 'react-router-dom';
 
 type NavigationProps = ComponentStyleProps & {
-  goPrev: any;
-  goNext: any;
+  goPrevRoute: any;
+  goNextRoute: any;
 };
 
 const NavigationContainer = styled.div`
@@ -18,16 +19,20 @@ const NavigationContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const Navigation = ({ goPrev, goNext, className }: NavigationProps) => (
+export const Navigation = ({
+  goPrevRoute,
+  goNextRoute,
+  className,
+}: NavigationProps) => (
   <NavigationContainer className={className}>
-    <Image src={ArrowLeft} className={`${className}__left`} onClick={goPrev} />
+    <Link to={goPrevRoute}>
+      <Image src={ArrowLeft} className={`${className}__left`} />
+    </Link>
     <Label text="4" />
     <Image src={Breadcrumb} className={`${className}__separator`} />
     <Label text="10" />
-    <Image
-      src={ArrowRight}
-      className={`${className}__right`}
-      onClick={goNext}
-    />
+    <Link to={goNextRoute}>
+      <Image src={ArrowRight} className={`${className}__right`} />
+    </Link>
   </NavigationContainer>
 );

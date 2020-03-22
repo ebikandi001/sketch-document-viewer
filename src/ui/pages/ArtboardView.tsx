@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  useDocumentState,
-  useDocumentDispatch,
-  SET_CURRENT_ARTBOARD,
-} from 'adapters';
+import { useDocumentState } from 'adapters';
 import { NavigationBar, ArtboardDetail } from '../components/organisms';
 import { Layout } from '../components/templates';
 
@@ -13,15 +9,17 @@ export const ArtboardView = ({
   },
 }: any) => {
   const doc = useDocumentState();
-  const dispatch = useDocumentDispatch();
-  dispatch({ type: SET_CURRENT_ARTBOARD, payload: id });
+  const currentId = Number(id);
 
-  const currentArtboard = doc?.artboards[id];
+  const currentArtboard = doc?.artboards[currentId];
+  const numArtboards = doc?.numArtboards || 0;
+  const prevId = currentId === 0 ? numArtboards - 1 : currentId - 1;
+  const nextId = currentId === numArtboards - 1 ? 0 : currentId + 1;
 
   const NavigationBarProps = {
-    onClose: () => console.log('close'),
-    goPrev: () => console.log('goPrev'),
-    goNext: () => console.log('goNext'),
+    closeRoute: `/document/${doc?.shortId}`,
+    goPrevRoute: `/artboard/${prevId}`,
+    goNextRoute: `/artboard/${nextId}`,
     text: currentArtboard?.name || '',
   };
 

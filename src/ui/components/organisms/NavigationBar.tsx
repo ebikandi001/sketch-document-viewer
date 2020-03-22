@@ -4,9 +4,9 @@ import { CloseButton, Navigation } from '../molecules';
 import { Label } from '../atoms';
 
 type DetailBarProps = {
-  onClose: any;
-  goPrev: any;
-  goNext: any;
+  closeRoute: string;
+  goPrevRoute: string;
+  goNextRoute: string;
   text: string;
 };
 
@@ -36,17 +36,17 @@ const Container = styled.div`
 `;
 
 export const NavigationBar = ({
-  onClose,
-  goPrev,
-  goNext,
+  closeRoute,
+  goPrevRoute,
+  goNextRoute,
   text,
 }: DetailBarProps) => (
   <Container className="detail-bar">
-    <CloseButton className="detail-bar__close" onClick={onClose} />
+    <CloseButton className="detail-bar__close" route={closeRoute} />
     <Navigation
       className="detail-bar__navigation"
-      goPrev={goPrev}
-      goNext={goNext}
+      goPrevRoute={goPrevRoute}
+      goNextRoute={goNextRoute}
     />
     <Label className="detail-bar__label" text={text} isBold={true} />
   </Container>
