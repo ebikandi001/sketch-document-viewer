@@ -2,23 +2,23 @@
 
 ### by [Eneko Bikandi](https://www.linkedin.com/in/ebikandi/)
 
-This project has been developed for the Sketch frontender application process. It had to be a copy of the a document viewer presented en the exercise (all the detail are in the _EXERCISE.MD_). This have given me the opportunity to develop something differrent apart from the usual React + Redux app, with a layered architecture that I'll explain further. Moreover, I must say that I have walked the **extra mile** requested in the test.
+This project has been developed for the Sketch frontender application process. It had to be a copy of the a document viewer presented en the exercise (all the detail are in the _EXERCISE.md_). This have given me the opportunity to develop something differrent apart from the usual React + Redux app, with a layered architecture that I'll explain further. Moreover, I must say that I have walked the **extra mile** requested in the test.
 
 - Documents are requested based on the url param. A link has been introduced in the title header to switch between documents. Also, each document will only be request once on each load and will be cached. So, we can be switching 1000 times without worrying to do a lot of requests.
 - Some testing have been introduced. There is not much, but it works as an example.
 
-I would like to say that the **original window resizing and size responsiveness** from the prototype has been respected and the layout always mantains an aspect ratio close to 4:3. I would preffer using a responsive column with liquid margins to wrapp the contenct, specially for the ArtboardGrid. But as the prototype was like this, I prefered to maintain it as it is.
+I would like to say that the **original window resizing and size responsiveness** from the prototype has been respected and the layout always mantains an aspect ratio close to 4:3. I would preffer using a responsive column with liquid margins to wrapp the content (like Mediun, for example), specially for the ArtboardGrid. But as the prototype was like this, I prefered to maintain it as it is.
 
-Also, a decision has been taken out of the given example. In the given prototype, the document has only 10 artboards which fit in the content grid, but the real one fetched from the api has much more. And these do not fit in the grid. So, in this case, it has been decided to show a vertical **scrollbar**.
+Also, a decision has been taken out of the given example. In the given prototype, the document had only 10 artboards which fit in the content grid, but the real one fetched from the api has much more and these do not fit in the grid. So, in this case, it has been decided to show a vertical **scrollbar** to let see all the thumbnails.
 
-In this document here I will defend my solution. First, I will explain why I took this approach and the problems I have encountered. After that, I want to list some future work and ideas I have in mind and I would take if I had the time. Finally, we'll go quickly through the steps to run the app.
+In the next lines I will defend my solution. First, I will explain why I took this approach and the problems I have encountered. After that, I want to list some future work and ideas I have in mind and I would take if I had the time. Finally, we'll go quickly through the steps to run the app.
 
 ## Taken approach
 
 The requisites of the task were pretty clear form the beginning thanks to the description in the EXERCISE.md. So, first of all, tools had to be chosen:
 
 - **React**. This is pretty straightforward, as it's use was a requisite from the exercise.
-- **Hooks and Context**. As I said, I wanted to go far from Redux from now. It is a tool that I use in my everyday job and, besides I think it's a useful tool (specially with the Sagas), sometimes it adds a lot of boilerplate and verbosity to the codebase. So I wanted to go for a different apporach and I have chosen these two for state management.
+- **Hooks and Context**. As I said, I wanted to go far from Redux from now. Redux is a tool that I use in my everyday job and, besides I think it's a useful tool (specially with the Sagas), sometimes it adds a lot of boilerplate and verbosity to the codebase. So I wanted to go for a different apporach and I have chosen these two for state management.
 - **ApolloClient**. As the data had to be fetched from a GraphQl, this client gives this feature pretty easily.
 - **Typescript**. Good tool to use instead of the usual React.PropTypes. Also, will give us type checking and autocomplete.
 - **Styled-Components**. My aim was to implement components follwing Bard Frost's Atomic Design proposal, so this tool would help me insulating the styles on each component. Also, as it accepts Sass lexic, used with BEM nomenclature would improve each style's readility.
@@ -52,9 +52,9 @@ And that's it. Each layer is decoupled and ready to be extended/replaced.
 
 ### UI
 
-Apart from the overall logic, the UI part of the app has been organized also following a methodology to make it hte most extensible and composable possible, the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/).
+Apart from the overall logic, the UI part of the app has been organized also following a methodology to make it the most extensible and composable possible, the [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/).
 
-There's much literature about this topic open to each one's interpretation, so we'll not going to spend much time explaining this. The main idea is that components and divided in the smaller parts possible, called _atoms_. These compose some more complex components, _molecules_. And composing these, we get the _organisms_. Then, you define a template which will serve as an skeleton to set the organisms in the layout. Finally, you build pages combining the needed organisms and setting them in the template.
+There's much literature about this topic open to each one's interpretation, so we'll not going to spend much time explaining this. The main idea is that components are divided in the smalleest parts possible, called _atoms_. These compose some more complex components, _molecules_. And composing these, we get the _organisms_. Then, you define a template which will serve as an skeleton to set the organisms in the layout. Finally, you build pages combining the needed organisms and setting them in the template.
 
 <img src="public/atomic.png" style="height: 200px;  width: auto;">
 
