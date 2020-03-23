@@ -75,6 +75,12 @@ This aims to increase reusability between components. Also, the pages wrapp all 
 
 Anyway, all is not good here because this approach drives to **PropDrilling** between components, which is not a good practice. This, with the rest of the problmes, will be explained in the next point.
 
+### Adapters (a.k.a Context)
+
+I would like to give an explanation about this aspect to. The goal was to avoid Redux for state management and crete small React.Contexts for each critical piece of the state. For example, in a ecommerce we could have an AuthenticationContext, a CartContext, a NavigationContext, ... And each component would only use the context it needed, and hence, only access the single state piece it is related to it's scope. For example, a Cart component would only know about Cart stuff and forget about Navigation.
+
+Maybe this approach was a little to ambitious, taking into cosideration that this application almost does not need the state management, as most of the comoponents are presentational and the key logic is about navigation. Nevertheless, I wwanted to keep this approach to think that would be extensible if future work is done in this project.
+
 ## Problems and future work
 
 As I said, it has not been a road of roses all the way and I have encountered some issues during the dev fase. I have to admit that developing this whole architecture has been motivating but it has taken me longer that I thought at the beginning, so I have less time to invest on some aspects. Hence, I had to prioritize some over others.
